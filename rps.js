@@ -1,5 +1,8 @@
 console.log("Hello World!");
 
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     const randomChoice = Math.random();
     if (randomChoice <= .33) {
@@ -11,4 +14,10 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    return prompt("Rock, Paper, Scissors?");
+}
+
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
+
