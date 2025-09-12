@@ -44,10 +44,6 @@ function playRound(humanChoice, computerChoice){
 
 function playGame(){
     let round = 1;
-    while (round <= 5){
-        playRound(getHumanChoice(), getComputerChoice());
-        ++round;
-    }
 
     let result = "";
     if (humanScore > computerScore){
@@ -62,4 +58,12 @@ function playGame(){
     alert(`Game Over! Final Scores: Human: ${humanScore} Computer: ${computerScore}. ${result}`);
 }
 
-playGame();
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+rockButton.addEventListener("click", () => playRound(rockButton.innerHTML, getComputerChoice));
+paperButton.addEventListener("click", () => playRound(paperButton.innerHTML, getComputerChoice));
+scissorsButton.addEventListener("click", () => playRound(scissorsButton.innerHTML, getComputerChoice));
+
+// playGame();
