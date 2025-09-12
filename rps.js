@@ -28,7 +28,9 @@ function playRound(humanChoice, computerChoice){
         console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
         alert(`You lose! ${computerChoice} beats ${humanChoice}!`);
         computerScore += 1;
-    } else if (humanChoice == "rock" && computerChoice == "scissors"){
+    } else if ((computerChoice == "rock" && humanChoice == "paper")
+        || (computerChoice == "paper" && humanChoice == "scissors")
+        || (computerChoice == "scissors" && humanChoice == "rock")){
         console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
         alert(`You win! ${humanChoice} beats ${computerChoice}!`);
         humanScore += 1;
@@ -46,14 +48,18 @@ function playGame(){
         playRound(getHumanChoice(), getComputerChoice());
         ++round;
     }
-    console.log("Game Over! Final Scores: Human: " + humanScore + " Computer: " + computerScore);
+
+    let result = "";
     if (humanScore > computerScore){
-        alert("Human Wins!");
+        result = "Human Wins!";
     } else if (computerScore > humanScore){
-        alert("Computer Wins!");
+        result = "Computer Wins!";
     } else {
-        alert("Tie Game!");
+        result = "Tie Game!";
     }
+
+    console.log(`Game Over! Final Scores: Human: ${humanScore} Computer: ${computerScore}`);
+    alert(`Game Over! Final Scores: Human: ${humanScore} Computer: ${computerScore}. ${result}`);
 }
 
 playGame();
