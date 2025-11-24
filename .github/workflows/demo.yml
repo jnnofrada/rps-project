@@ -1,0 +1,35 @@
+name: Demo workflow
+
+on:
+
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    name: Build
+    runs-on: [windows-latest, macos-latest]
+    needs: dev
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and Deploy
+      - run: echo "Hello, World! I'm Building"
+
+  dev:
+    name: Development
+    runs-on: [windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run the Developer
+      - run: echo "Hello, World! I'm Developing"
+
+  test:
+    name: Test
+    runs-on: [windows-latest, macos-latest]
+    needs: [build, dev]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Testing the application
+      - run: echo "Hello, World! I'm Testing"
+      
